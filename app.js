@@ -6,14 +6,14 @@ const IVA = 0.15; // IVA vigente en Ecuador: 15 %
 const STOCK_INICIAL = 10;
 const CLAVE_GUARDADO = "tiendatech-datos";
 const catalogo = [
-  { id: 1, nombre: "Mouse inalámbrico", precio: 12.5, categoria: "Periféricos" },
-  { id: 2, nombre: "Teclado mecánico", precio: 25, categoria: "Periféricos" },
-  { id: 3, nombre: "Audífonos con micrófono", precio: 35, categoria: "Periféricos" },
-  { id: 4, nombre: "Cámara web HD", precio: 42, categoria: "Periféricos" },
-  { id: 5, nombre: "Cable USB-C 1 m", precio: 2, categoria: "Accesorios" },
-  { id: 6, nombre: "Memoria USB 64 GB", precio: 9.9, categoria: "Accesorios" },
-  { id: 7, nombre: "Hub USB-C 4 puertos", precio: 28, categoria: "Accesorios" },
-  { id: 8, nombre: "Monitor 24 pulgadas", precio: 189, categoria: "Pantallas" },
+  { id: 1, nombre: "Mouse inalámbrico", precio: 12.5, categoria: "Periféricos", imagen: "images/mouse.jpg" },
+  { id: 2, nombre: "Teclado mecánico", precio: 25, categoria: "Periféricos", imagen: "images/teclado.jpg" },
+  { id: 3, nombre: "Audífonos con micrófono", precio: 35, categoria: "Periféricos", imagen: "images/audifonos.jpg" },
+  { id: 4, nombre: "Cámara web HD", precio: 42, categoria: "Periféricos", imagen: "images/camara-web.jpg" },
+  { id: 5, nombre: "Cable USB-C 1 m", precio: 2, categoria: "Accesorios", imagen: "images/cable-usb-c.jpg" },
+  { id: 6, nombre: "Memoria USB 64 GB", precio: 9.9, categoria: "Accesorios", imagen: "images/memoria-usb.jpg" },
+  { id: 7, nombre: "Hub USB-C 4 puertos", precio: 28, categoria: "Accesorios", imagen: "images/hub-usb.jpg" },
+  { id: 8, nombre: "Monitor 24 pulgadas", precio: 189, categoria: "Pantallas", imagen: "images/monitor.jpg" },
 ];
 
 // 2. ESTADO: los datos que describen lo que se ve en pantalla
@@ -169,6 +169,13 @@ function crearTarjetaProducto(producto) {
   const enCarrito = estado.carrito.some((i) => i.id === producto.id);
   tarjeta.classList.toggle("en-carrito", enCarrito);
 
+  const imagen = document.createElement("img");
+  imagen.classList.add("imagen-producto");
+  imagen.src = producto.imagen;
+  imagen.alt = producto.nombre;
+  imagen.loading = "lazy";
+  imagen.decoding = "async";
+
   const favorito = estado.favoritos.includes(producto.id);
   const botonFavorito = document.createElement("button");
   botonFavorito.type = "button";
@@ -201,7 +208,7 @@ function crearTarjetaProducto(producto) {
   boton.disabled = unidadesDisponibles === 0;
   boton.textContent = boton.disabled ? "Agotado" : enCarrito ? "✓ Agregar otro" : "Agregar";
 
-  tarjeta.append(botonFavorito, categoria, nombre, precio, stock, boton);
+  tarjeta.append(imagen, botonFavorito, categoria, nombre, precio, stock, boton);
   return tarjeta;
 }
 

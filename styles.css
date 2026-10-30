@@ -393,7 +393,7 @@ select:focus {
 
 .producto::before {
     height: 106px;
-    display: grid;
+    display: none;
     place-items: center;
     margin-bottom: 4px;
     border-radius: 10px;
@@ -402,6 +402,16 @@ select:focus {
     content: "⌁";
     font-size: 48px;
     font-weight: 500;
+}
+
+.imagen-producto {
+    width: 100%;
+    height: 116px;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 4px;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #f3edff, #fcece6);
 }
 
 .producto:nth-child(1)::before {
@@ -1401,7 +1411,7 @@ select:focus {
 }
 
 @media (max-width: 430px) {
-    .producto::before {
+    .imagen-producto {
         height: 88px;
     }
 }
