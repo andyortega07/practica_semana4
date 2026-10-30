@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f6f1">
+  <meta name="description" content="Explora tecnología y accesorios, arma tu carrito y confirma tu pedido.">
+  <title>Tienda Tech · Tecnología para tu día</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="barra">
+    <a class="marca" href="#" aria-label="Tienda Tech, inicio">
+      <span class="marca-icono" aria-hidden="true">T</span>
+      <span class="marca-texto">tienda<span>tech</span></span>
+    </a>
+    <p class="carrito-icono">
+      <span class="carrito-etiqueta">Tu carrito</span>
+      <span class="carrito-simbolo" aria-hidden="true">🛒</span>
+      <span id="badge" class="badge">0</span>
+    </p>
+  </header>
+
+  <main>
+    <section class="portada" aria-labelledby="titulo-portada">
+      <div class="portada-contenido">
+        <p class="sobretitulo"><span></span> TECNOLOGÍA PARA TU DÍA</p>
+        <h1 id="titulo-portada">Lo que necesitas.<br><span>Un clic más cerca.</span></h1>
+        <p class="portada-descripcion">Encuentra tus esenciales tecnológicos y arma tu pedido en minutos.</p>
+        <a class="enlace-portada" href="#catalogo">Explorar productos <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="portada-visual" role="img" aria-label="Selección de dispositivos tecnológicos"></div>
+      <div class="sello-portada"><span>✦</span> Tecnología que<br>te acompaña</div>
+    </section>
+
+    <div class="layout">
+      <!-- CATÁLOGO -->
+      <section class="panel panel-catalogo">
+        <div class="encabezado-panel">
+          <div>
+            <p class="sobretitulo">ENCUENTRA TU PRÓXIMO FAVORITO</p>
+            <h2>Explora el catálogo</h2>
+          </div>
+          <span class="etiqueta-catalogo">Selección tech</span>
+        </div>
+        <div class="filtros">
+          <label class="campo-busqueda">
+            <span class="sr-only">Buscar productos</span>
+            <span class="icono-busqueda" aria-hidden="true"></span>
+            <input type="search" id="buscar" placeholder="¿Qué estás buscando?">
+          </label>
+          <label class="sr-only" for="categoria">Filtrar por categoría</label>
+          <select id="categoria">
+            <option value="todas">Todas las categorías</option>
+            <option value="Periféricos">Periféricos</option>
+            <option value="Accesorios">Accesorios</option>
+            <option value="Pantallas">Pantallas</option>
+          </select>
+          <label class="sr-only" for="ordenar">Ordenar productos por precio</label>
+          <select id="ordenar">
+            <option value="predeterminado">Orden predeterminado</option>
+            <option value="precio-asc">Precio: menor a mayor</option>
+            <option value="precio-desc">Precio: mayor a menor</option>
+          </select>
+        </div>
+        <p id="sinResultados" class="vacio" hidden>No hay productos que coincidan con la búsqueda.</p>
+        <div id="catalogo" class="catalogo"></div>
+      </section>
+
+      <!-- CARRITO -->
+      <section class="panel panel-carrito">
+        <div class="encabezado-panel">
+          <div>
+            <p class="sobretitulo">CASI LO TIENES</p>
+            <h2>Tu carrito <span class="carrito-heading" aria-hidden="true">✦</span></h2>
+          </div>
+        </div>
+        <p id="carritoVacio" class="vacio"><span class="icono-vacio" aria-hidden="true">🛍</span><strong>Tu carrito está esperando</strong><span>Agrega productos del catálogo para empezar.</span></p>
+        <ul id="listaCarrito" class="lista-carrito"></ul>
+
+        <label class="etiqueta-envio" for="envio">¿Cómo quieres recibirlo?</label>
+        <select id="envio">
+          <option value="retiro">Retiro en el local</option>
+          <option value="cuenca">Envío dentro de Cuenca</option>
+          <option value="nacional">Envío nacional</option>
+        </select>
+
+        <div id="resumen" class="resumen"></div>
+
+        <div class="acciones">
+          <button type="button" id="btnConfirmar" class="principal" disabled>Confirmar pedido <span aria-hidden="true">→</span></button>
+          <button type="button" id="btnVaciar" class="secundario" disabled>Vaciar carrito</button>
+        </div>
+        <a class="enlace-ayuda" href="#modal-compra">¿Cómo funciona la compra? <span aria-hidden="true">↗</span></a>
+        <p id="mensaje" class="mensaje" hidden></p>
+      </section>
+    </div>
+  </main>
+  <footer class="pie">
+    <span class="marca-texto">tienda<span>tech</span></span>
+    <span>Tecnología para acompañarte todos los días.</span>
+  </footer>
+
+  <section id="modal-compra" class="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-modal" tabindex="-1">
+    <a class="modal-fondo" href="#catalogo" aria-label="Cerrar ventana"></a>
+    <div class="modal-contenido">
+      <a class="modal-cerrar" href="#catalogo" aria-label="Cerrar ventana">×</a>
+      <p class="sobretitulo">COMPRA A TU RITMO</p>
+      <h2 id="titulo-modal">Así de fácil es tenerlo</h2>
+      <p class="modal-descripcion">Arma tu selección y nosotros te ayudamos con el resto.</p>
+      <ol class="pasos-compra">
+        <li><span>01</span><div><strong>Elige tus favoritos</strong><small>Explora el catálogo y agrégalos a tu carrito.</small></div></li>
+        <li><span>02</span><div><strong>Selecciona la entrega</strong><small>Retira en el local o recibe tu pedido en casa.</small></div></li>
+        <li><span>03</span><div><strong>Confirma tu pedido</strong><small>Revisa el total y confirma cuando esté listo.</small></div></li>
+      </ol>
+      <a class="modal-listo" href="#catalogo">¡Entendido! <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</body>
+</html>
